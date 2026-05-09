@@ -111,9 +111,9 @@ def has_SBJ(C):
 def is_DOBJ(P, C):
     if re.search('^(VP|Vv)', P):
         if re.search('^(NP|QNP|QP)(-DOB)', C):
-            return 'np_dobj'
+            return 'n_dobj'
     elif '-DOB' in C:
-        return 'np_dobj'
+        return 'n_dobj'
     else:
         return False
 
@@ -121,14 +121,14 @@ def is_DOBJ(P, C):
 def is_IOBJ(P, C):
     if re.search('^(VP|Vv)', P):
         if re.search('^(NP|QNP)(-IOB)', C):
-            return 'np_iobj'
+            return 'n_iobj'
     else:
         return False
 
 
 def is_PIOBJ(C):
     if re.search('^(PP)(-IOB)', C):
-        return 'pp_iobj'
+        return 'p_iobj'
 
 
 # --- CMP labels ---
@@ -136,13 +136,13 @@ def is_PIOBJ(C):
 def complement_of_Vc(p, C):
     if re.search('^(Vc)(-|$)', p):
         if re.search('^(NP|QNP)(-CMP|$)', C):
-            return 'np_sc'
+            return 'n_sc'
         elif re.search('^(ADJP)(-CMP|$)', C):
-            return 'adjp_sc'
+            return 'a_sc'
         elif re.search('^(PP)(-CMP|$)', C):
-            return 'pp_sc'
+            return 'p_sc'
         elif re.search('^(VP)(-CMP|$)', C):
-            return 'vp_sc'
+            return 'v_sc'
         elif re.search('^(S|SPL|SQ)(-CMP)', C):
             return 'c_sc'
     else:
@@ -176,38 +176,38 @@ def is_CCOMP_or_XCOMP(P, p, C, C_tree):
                     return 'ccomp'
                 else:
                     if has_POS(C_tree, 'VP'):
-                        return 'xcomp:vp'
+                        return 'xcomp:v'
                     elif has_POS(C_tree, 'ADJP'):
-                        return 'xcomp:adjp'
+                        return 'xcomp:a'
                     elif has_POS(C_tree, 'NP') or has_POS(C_tree, 'QNP'):
-                        return 'xcomp:np'
+                        return 'xcomp:n'
                     elif has_POS(C_tree, 'PP'):
-                        return 'xcomp:pp'
+                        return 'xcomp:p'
             elif re.search('^(S)(-[0-9]|-CMP|$)', C):
                 print("C_label", C)
                 if has_subject(C_tree):
                     return 'ccomp'
                 else:
                     if has_POS(C_tree, 'VP'):
-                        return 'xcomp:vp'
+                        return 'xcomp:v'
                     elif has_POS(C_tree, 'ADJP'):
-                        return 'xcomp:adjp'
+                        return 'xcomp:a'
                     elif has_POS(C_tree, 'NP') or has_POS(C_tree, 'QNP'):
-                        return 'xcomp:np'
+                        return 'xcomp:n'
                     elif has_POS(C_tree, 'PP'):
-                        return 'xcomp:pp'
+                        return 'xcomp:p'
             elif re.search('^(SBAR)(-[0-9]|-CMP|$)', C):
                 if has_subject(C_tree):
                     return 'ccomp'
                 else:
                     if has_POS(C_tree, 'VP'):
-                        return 'xcomp:vp'
+                        return 'xcomp:v'
                     elif has_POS(C_tree, 'ADJP'):
-                        return 'xcomp:adjp'
+                        return 'xcomp:a'
                     elif has_POS(C_tree, 'NP') or has_POS(C_tree, 'QNP'):
-                        return 'xcomp:np'
+                        return 'xcomp:n'
                     elif has_POS(C_tree, 'PP'):
-                        return 'xcomp:pp'
+                        return 'xcomp:p'
             else:
                 is_ADVCL(C, C_tree)
     else:
@@ -217,7 +217,7 @@ def is_CCOMP_or_XCOMP(P, p, C, C_tree):
 def complement_of_PREP(P, C):
     if re.search('^(PP|QPP)', P):
         if re.search('^(NP|QNP|VP|ADJP|S|SPL)', C):
-            return 'pp_comp'
+            return 'pc_comp'
     else:
         return False
 
@@ -299,56 +299,56 @@ def is_RCMOD(P, C, C_tree):
 
 def is_NP_LMOD(C):
     if re.search('^(NP)(-LOC)', C):
-        return 'np_lmod'
+        return 'n_lmod'
     else:
         return False
 
 
 def is_NP_TMOD(C):
     if re.search('^(NP)(-TMP)', C):
-        return 'np_tmod'
+        return 'n_tmod'
     else:
         return False
 
 
 def is_ADJP_LMOD(C):
     if re.search('^(ADJP)(-LOC)', C):
-        return 'adjp_lmod'
+        return 'a_lmod'
     else:
         return False
 
 
 def is_ADJP_TMOD(C):
     if re.search('^(ADJP)(-TMP)', C):
-        return 'adjp_tmod'
+        return 'a_tmod'
     else:
         return False
 
 
 def is_PP_LMOD(C):
     if re.search('^(PP|QPP)(-LOC)', C):
-        return 'pp_lmod'
+        return 'p_lmod'
     else:
         return False
 
 
 def is_PP_TMOD(C):
     if re.search('^(PP|QPP)(-TMP)', C):
-        return 'pp_tmod'
+        return 'p_tmod'
     else:
         return False
 
 
 def is_VP_TMOD(C):
     if re.search('^(VP)(-TMP)', C):
-        return 'vp_tmod'
+        return 'v_tmod'
     else:
         return False
 
 
 def is_VP_LMOD(C):
     if re.search('^(VP)(-LOC)', C):
-        return 'vp_lmod'
+        return 'v_lmod'
     else:
         return False
 
@@ -362,21 +362,21 @@ def is_C_TMOD(C):
 
 def is_NP_ADVMOD(C):
     if re.search('^(NP|QP|QNP)(-MNR|-ADV|-PRP|-CND|-CNC|-TPC)', C):
-        return 'np_advmod'
+        return 'n_advmod'
     else:
         return False
 
 
 def is_PP_ADVMOD(C):
     if re.search('^(PP)(-MNR|-ADV|-PRP|-CND|-TPC)', C):
-        return 'pp_advmod'
+        return 'p_advmod'
     else:
         return False
 
 
 def is_VP_ADVMOD(C):
     if re.search('^(VP)(-MNR|-ADV|-PRP|-CND|-TPC)', C):
-        return 'vp_advmod'
+        return 'v_advmod'
     else:
         return False
 

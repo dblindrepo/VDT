@@ -329,7 +329,7 @@ def get_subjpass(tree_dependency):
         main_relation = element[7]
         second_relation = element[8].split('|') if element[8] != '_' else []
 
-        if main_relation.startswith('n') or 'pp_comp' in main_relation:
+        if main_relation.startswith('n') or 'pc_comp' in main_relation:
             rel_pairs = []
             for rel in second_relation:
                 if rel and rel != '_':
@@ -340,7 +340,7 @@ def get_subjpass(tree_dependency):
                         rel_pairs.append((None, parts[0]))
 
             has_nsubj = any(r[1] == 'nsubj' for r in rel_pairs)
-            has_np_dobj = any(r[1] == 'np_dobj' for r in rel_pairs)
+            has_np_dobj = any(r[1] == 'n_dobj' for r in rel_pairs)
 
             try:
                 headofsub_index = int(element[6])
@@ -362,7 +362,7 @@ def get_subjpass(tree_dependency):
 
             if has_nsubj and has_np_dobj:
                 nsubj_indices = [i for i, r in rel_pairs if r == 'nsubj']
-                np_dobj_indices = [i for i, r in rel_pairs if r == 'np_dobj']
+                np_dobj_indices = [i for i, r in rel_pairs if r == 'n_dobj']
 
                 for idx, (nsubj_index, relname) in enumerate(rel_pairs):
                     if relname == 'nsubj':
