@@ -1,4 +1,4 @@
-# VDT Converter
+# VDT: A New Vietnamese Dependency Treebank via Semi-Automatic Annotation
 
 A rule-based system for converting Vietnamese constituency trees into dependency representations in the CoNLL-U format. The conversion pipeline implements head-percolation rules and dependency labeling heuristics tailored to the annotation scheme of the NIIVTB-1 Vietnamese treebank.
 
@@ -84,3 +84,4 @@ Each output file follows the CoNLL-U 10-column format:
 | 8 | DEPREL | Dependency relation label |
 | 9 | DEPS | Enhanced dependencies (second relations) |
 | 10 | MISC | Underscore (not used) |
+
