@@ -6,7 +6,7 @@ This repository presents **VDT**, a Vietnamese dependency treebank constructed t
 
 ## Overview
 
-Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups: subjects-related, objects-related, complements-related, modifiers-related, and extended labels. The label design accounts for language-specific phenomena including Sino-Vietnamese elements, diverse classifier nouns, and the language’s highly analytic nature.
+Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups: subjects-related, objects-related, complements-related, modifiers-related, and extended labels. The label design accounts for language-specific phenomena including Sino-Vietnamese syllables, diverse classifier nouns, and the language’s highly analytic nature.
 
 The treebank contains **10,418 sentences** split as follows:
 
