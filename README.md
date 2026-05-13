@@ -112,9 +112,7 @@ To reproduce the dependency conversion pipeline and generate the final dependenc
 
 ### 1. Download NIIVTB-1
 
-Clone or download the source treebank from:
-
-https://github.com/mynlp/niivtb
+Download the source treebank from: https://github.com/mynlp/niivtb
 
 Place the `NIIVTB-1/` directory inside `vdt_converter/` with the following structure:
 
