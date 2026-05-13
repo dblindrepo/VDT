@@ -1,12 +1,12 @@
 # VDT: A Vietnamese Dependency Treebank via Semi-Automatic Annotation
 
-This repository presents **VDT**, a Vietnamese dependency treebank constructed through a semi-automatic pipeline designed to balance scalability with linguistic rigor. The treebank is converted from phrase-structure trees (Penn Treebank format) into dependency graphs following the CoNLL-U format, using a rule-based converter developed specifically for Vietnamese. To ensure annotation quality and structural consistency, the automatically converted dependency graphs edited through rigorous manual annotation.
+This repository presents **VDT**, a Vietnamese dependency treebank constructed through a semi-automatic pipeline designed to balance scalability with linguistic rigor. The treebank is converted from phrase-structure trees (Penn Treebank format) into dependency graphs following the CoNLL-U format, using a rule-based converter developed specifically for Vietnamese. To ensure annotation quality and structural consistency, the automatically converted dependency graphs were edited through rigorous manual annotation.
 
 ---
 
 ## Overview
 
-Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups: subjects-related, objects-related, complements-related, modifiers-related, and extended labels. The label design accounts for language-specific phenomena including Sino-Vietnamese syllables, diverse classifier nouns, and the language’s highly analytic nature.
+Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups: subjects-related, objects-related, complements-related, modifiers-related, and extended labels. The label design accounts for language-specific phenomena including Sino-Vietnamese, diverse classifier nouns, and the language’s highly analytic nature.
 
 The treebank contains **10,418 sentences** split as follows:
 
