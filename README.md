@@ -1,12 +1,38 @@
 # VDT: A Vietnamese Dependency Treebank via Semi-Automatic Annotation
 
-This repository presents **VDT**, a Vietnamese dependency treebank constructed through a semi-automatic pipeline designed to balance scalability with linguistic rigor. The treebank is converted from phrase-structure trees (Penn Treebank format) into dependency graphs following the CoNLL-U format, using a rule-based converter developed specifically for Vietnamese. To ensure annotation quality and structural consistency, the automatically converted dependency graphs were edited through rigorous manual annotation.
+This repository introduces **VDT (Vietnamese Dependency Treebank)**, a high-precision Vietnamese dependency parsing resource constructed through a semi-automatic annotation framework designed to balance scalability and linguistic quality.
 
----
+The construction of VDT follows a two-stage pipeline:
+
+- **Phase 1: Automatic Conversion**  
+  A Vietnamese-specific rule-based converter transforms the NIIVTB-1 constituency treebank into an initial dependency version, referred to as **VDT Auto**.
+
+- **Phase 2: Manual Post-editing**  
+  The automatically converted dependency structures are systematically edited using annotation guidelines and quality-control procedures to produce the final **VDT** dataset.
+
+To support the conversion process, we additionally propose a Vietnamese-oriented dependency label framework tailored to the syntactic characteristics of Vietnamese.
+
+<p align="center">
+  <img src="VDT-process.png" width="850"/>
+</p>
+
+<p align="center">
+  <em>
+  At the outset, a dependency label system tailored to Vietnamese is carefully designed. The semi-automatic construction process begins with an automatic conversion phase, where a converter is developed to transform the NIIVTB-1 constituency treebank into the first dependency version, VDT Auto. This version is then edited to rigorous manual annotation to produce the final version, VDT.
+  </em>
+</p>
 
 ## Overview
 
-Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups: subjects-related, objects-related, complements-related, modifiers-related, and extended labels. The label design accounts for language-specific phenomena including Sino-Vietnamese, diverse classifier nouns, and the language’s highly analytic nature.
+Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups:
+
+- subjects-related
+- objects-related
+- complements-related
+- modifiers-related
+- extended labels
+
+The label design accounts for language-specific phenomena including Sino-Vietnamese, diverse classifier noun systems, and the language's highly analytic nature.
 
 The treebank contains **10,418 sentences** split as follows:
 
@@ -16,7 +42,7 @@ The treebank contains **10,418 sentences** split as follows:
 | Dev   | 1,000 |
 | Test  | 1,000 |
 
----
+<!-- ---
 
 ## Dependency Label Set
 
@@ -67,20 +93,79 @@ VDT defines 83 labels organized into five functional groups. Labels marked in **
 | 41 | **`n_lmod`** | Noun phrase as locative modifier | 82 | `root` | Root |
 | | | | 83 | `dep` | Unspecified dependency |
 
----
+--- -->
 
 ## Conversion Pipeline
 
-The converter transforms constituent trees into dependency structures through four sequential stages: 
+The converter transforms constituent trees into dependency structures through four main sequential stages:
 
 1. **Head percolation** — assigns a lexical head to each constituent node using language-specific head-finding rules tailored for Vietnamese.
 2. **Coordination resolution** — handles symmetric conjunct structures.
 3. **Dependency labeling** — assigns one of 83 relation labels to each head–dependent arc based on phrasal categories, functional tags (e.g., `PRD`, `CMP`, `TMP`), and syntactic contexts.
 4. **NULL element processing** — resolves traces and empty categories introduced by the original phrase-structure annotation.
 
-Detailed pseudocode for stage **Dependency labeling** is documented in `dependency_labeling_procedures.pdf` and the implementation is available in the in `vdt_converter` directory.
+Detailed pseudocode for stage **Dependency labeling** is documented in `dependency_labeling_procedures.pdf`, and the implementation is available in the `vdt_converter` directory.
 
----
+## Reproducing the Conversion Experiments
+
+To reproduce the dependency conversion pipeline and generate the final dependency trees, follow the steps below.
+
+### 1. Download NIIVTB-1
+
+Clone or download the source treebank from:
+
+https://github.com/mynlp/niivtb
+
+Place the `NIIVTB-1/` directory inside `vdt_converter/` with the following structure:
+
+```text
+vdt_converter/
+└── NIIVTB-1/
+    ├── Train/
+    ├── Dev/
+    └── Test/
+```
+
+### 2. Run the Converter
+
+Navigate to the converter directory and execute:
+
+```bash
+cd vdt_converter
+
+python main.py --input-dir <path_to_NIIVTB-1> [--base-dir <output_directory>]
+```
+
+Example:
+
+```bash
+python main.py --input-dir ./NIIVTB-1 --base-dir ./outputs
+```
+
+### 3. Output Files
+
+The converter generates two sets of outputs under `<base-dir>/`:
+
+```text
+<base-dir>/
+├── OneLine/              # Intermediate one-sentence-per-line files
+│   ├── Train/
+│   ├── Dev/
+│   └── Test/
+└── VnDep/                # Final CoNLL-U dependency trees
+    ├── Train/
+    ├── Dev/
+    └── Test/
+```
+
+- `OneLine/` contains intermediate linearized representations used during preprocessing.
+- `VnDep/` contains the final converted dependency trees in CoNLL-U format, which are used in the experiments reported in this work.
+
+## Release Notice
+
+This repository contains an anonymized implementation of the proposed VDT framework. The full paper, annotation guidelines, conversion guidelines, and the final dependency treebank will be publicly released upon paper acceptance.
+
+<!-- ---
 
 ## CoNLL-U Format
 
@@ -97,7 +182,7 @@ Each token is represented as a 10-column record:
 | 7      | HEAD    | Index of the syntactic head (0 for root)         |
 | 8      | DEPREL  | Dependency relation label                        |
 | 9      | DEPS    | Enhanced dependencies (secondary relations)      |
-| 10     | MISC    | Underscore (not used)                            |
+| 10     | MISC    | Underscore (not used)                            | -->
 
 <!-- ---
 
