@@ -8,29 +8,30 @@ The construction of VDT follows a two-stage pipeline:
   A Vietnamese-specific rule-based converter transforms the NIIVTB-1 constituency treebank into an initial dependency version, referred to as **VDT Auto**.
 
 - **Phase 2: Manual Post-editing**  
-  The automatically converted dependency structures are systematically edited using annotation guidelines and quality-control procedures to produce the final **VDT** dataset.
+  The VDT Auto is then edited to rigorous manual annotation to produce the final version, **VDT**.
 
-To support the conversion process, we additionally propose a Vietnamese-oriented dependency label framework tailored to the syntactic characteristics of Vietnamese.
+To support the conversion process, we additionally propose a dependency label system tailored to the syntactic characteristics of Vietnamese.
 
 <p align="center">
   <img src="VDT-process.png" width="850"/>
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <em>
   At the outset, a dependency label system tailored to Vietnamese is carefully designed. The semi-automatic construction process begins with an automatic conversion phase, where a converter is developed to transform the NIIVTB-1 constituency treebank into the first dependency version, VDT Auto. This version is then edited to rigorous manual annotation to produce the final version, VDT.
   </em>
-</p>
+</p> -->
 
 ## Overview
 
-Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**, organized into five functional groups:
+Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**.
+<!--, organized into five functional groups:
 
 - subjects-related
 - objects-related
 - complements-related
 - modifiers-related
-- extended labels
+- extended labels -->
 
 The label design accounts for language-specific phenomena including Sino-Vietnamese, diverse classifier noun systems, and the language's highly analytic nature.
 
@@ -137,7 +138,7 @@ python main.py --input-dir <path_to_NIIVTB-1> [--base-dir <output_directory>]
 Example:
 
 ```bash
-python main.py --input-dir ./NIIVTB-1 --base-dir ./outputs
+python main.py --input-dir ./vdt_converter/NIIVTB-1 --base-dir ./vdt_converter/outputs
 ```
 
 ### 3. Output Files
