@@ -100,10 +100,10 @@ VDT defines 83 labels organized into five functional groups. Labels marked in **
 
 The converter transforms constituent trees into dependency structures through four main sequential stages:
 
-1. **Head identification** — identifies the head for each constituent node using head percolation rules tailored for Vietnamese. 
-2. **Coordination handling** — identifies Vietnamese coordination structures and resolves them by assigning the first conjunct as the head and attaching shared dependents directly to it. 
-3. **Dependency Labeling** - assigns one of 83 relation labels to each head–dependent arc based on POS tags, functional tags, and constituency tags.
-4. **NULL element processing** — handles empty categories tailored to Vietnamese syntactic features.
+1. **Head Identification** — determines the syntactic head of each constituent based on predefined Vietnamese-specific head rules.
+2. **Coordination Handling** — resolves coordination structures and assigns appropriate dependency relations.
+3. **Dependency Label Assignment** — assigns labels for dependencies.
+4. **NULL Element Processing** — handles traces and empty categories to preserve structural consistency.
 
 Detailed pseudocode for stage **Dependency labeling** is documented in `dependency_labeling_procedures.pdf`, and the implementation is available in the `vdt_converter` directory.
 
