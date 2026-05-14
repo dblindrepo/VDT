@@ -4,12 +4,12 @@ The automatic conversion from constituency trees to dependency structures relies
 
 To address these challenges, this directory provides the implementation of the constituent-to-dependency converter used in the semi-automatic construction pipeline of VDT. The converter transforms constituency trees into dependency structures through four major stages:
 
-1. **Head Identification** — determines the syntactic head of each constituent based on predefined Vietnamese-specific head rules.
-2. **Coordination Handling** — resolves coordination structures and assigns appropriate dependency relations.
-3. **Dependency Label Assignment** — assigns labels for dependencies.
-4. **NULL Element Processing** — handles traces and empty categories to preserve structural consistency.
+1. **Head identification** — identifies the head for each constituent node using head percolation rules tailored for Vietnamese. 
+2. **Coordination handling** — identifies Vietnamese coordination structures and resolves them by assigning the first conjunct as the head and attaching shared dependents directly to it. 
+3. **Dependency Labeling** - assigns one of 83 relation labels to each head–dependent arc based on POS tags, functional tags, and constituency tags.
+4. **NULL element processing** — handles empty categories tailored to Vietnamese syntactic features.
 
-The converter serves as the first core component of the semi-automatic annotation framework, producing the initial dependency treebank (**VDT Auto**) that is subsequently refined through manual revision and quality assurance procedures.
+The converter serves as the first core component of the semi-automatic annotation framework, producing the initial dependency treebank (**VDT Auto**) that is subsequently edited through a rigorous manual annotation.
 
 ---
 
