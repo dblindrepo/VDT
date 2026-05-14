@@ -8,7 +8,7 @@ The construction of VDT follows a two-stage pipeline:
   A Vietnamese-specific rule-based converter transforms the NIIVTB-1 constituency treebank into an initial dependency version, referred to as **VDT Auto**.
 
 - **Phase 2: Manual Post-editing**  
-  The VDT Auto is then edited to rigorous manual annotation to produce the final version, **VDT**.
+  The VDT Auto is then edited through rigorous manual annotation to produce the final version, **VDT**.
 
 To support the conversion process, we additionally propose a dependency label system tailored to the syntactic characteristics of Vietnamese.
 
