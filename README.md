@@ -24,7 +24,7 @@ To support the conversion process, we additionally propose a dependency label sy
 
 ## Overview
 
-Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 dependency relations**.
+Vietnamese is a highly analytic language with no morphological inflection, making standard Universal Dependencies (UD) labels insufficient to capture its full syntactic range. VDT addresses this by introducing a label set of **83 relations**.
 <!--, organized into five functional groups:
 
 - subjects-related
@@ -102,7 +102,7 @@ The converter transforms constituent trees into dependency structures through fo
 
 1. **Head percolation** — assigns a lexical head to each constituent node using language-specific head-finding rules tailored for Vietnamese.
 2. **Coordination resolution** — handles symmetric conjunct structures.
-3. **Dependency labeling** — assigns one of 83 relation labels to each head–dependent arc based on phrasal categories, functional tags (e.g., `PRD`, `CMP`, `TMP`), and syntactic contexts.
+3. **Dependency labeling** — assigns one of 83 labels to each head–dependent arc based on phrasal categories, functional tags (e.g., `PRD`, `CMP`, `TMP`), and syntactic contexts.
 4. **NULL element processing** — resolves traces and empty categories introduced by the original phrase-structure annotation.
 
 Detailed pseudocode for stage **Dependency labeling** is documented in `dependency_labeling_procedures.pdf`, and the implementation is available in the `vdt_converter` directory.
