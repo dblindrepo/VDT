@@ -2,18 +2,16 @@
 
 A rule-based converter that transforms Vietnamese **constituency trees** into **dependency trees** in [CoNLL-U](https://universaldependencies.org/format.html) format. The system is designed for the **NIIVTB-1** annotation scheme and assigns relations from the **VDT** label inventory (83 dependency relations; see [`README.md`](README.md)).
 
-## Source layout
+## Module descriptions
 
-```
-vdt_converter/
-├── main.py               # Argument parsing, output directory setup, glob over `*/*.prd`, sequential three-step batch run
-├── converter.py          # `get_all_relation()` builds head/relation maps; `get_dependency_tree_list()` assembles CoNLL-U rows; `to_oneline()` and `finish_dependency_tree()` handle I/O
-├── preprocessing.py      # Access constituents by tree path (`get_subtree`); list all constituent addresses (`get_all_subtree_address`); extract POS tags; assign numeric indices to leaves (`from_word_to_number`)
-├── head_percolation.py   # Identify the lexical head of each constituent via `HEAD_PERCOLATION_RULES` and exception rules; labels coordinated dependents (`conj`, `cc`, `punct`) in `assign_headword_for_phrase()`
-├── dependency_rules.py   # Assigns each token a VDT dependency label from parent–child phrase labels and functional tags; maps phrases with `get_C_of_headword` / `get_P_of_C`; applies an ordered rule cascade in `get_dependency_relation()`
-├── postprocessing.py     # NULL/antecedent resolution, second relations, relinking, indexing, and tree-wide label corrections
-└── README.md
-```
+| Module | Role |
+|--------|------|
+| `main.py` | CLI: batch conversion over NIIVTB-1 splits |
+| `converter.py` | Core conversion logic: head–dependent mapping, CoNLL-U record assembly, and file I/O |
+| `preprocessing.py` | Tree addressing, POS extraction, leaf indexing |
+| `head_percolation.py` | Determines the head of each constituent via head-percolation rules and coordination handling |
+| `dependency_rules.py` | Dependency relation labeling |
+| `postprocessing.py` | NULL/trace resolution and label correction |
 
 ## Conversion pipeline
 
@@ -34,17 +32,6 @@ OneLine/[Line]*.prd          one tree per line, whitespace-normalized
         ▼  finish_dependency_tree()
 VnDep/[VnDep]*.conllu        post-process + write (# ID = n headers)
 ```
-
-## Module reference
-
-| Module | Role |
-|--------|------|
-| `main.py` | CLI: batch conversion over NIIVTB-1 splits |
-| `converter.py` | Core conversion logic: head–dependent mapping, CoNLL-U record assembly, and file I/O |
-| `preprocessing.py` | Tree addressing, POS extraction, leaf indexing |
-| `head_percolation.py` | Determines the head of each constituent via head-percolation rules and coordination handling |
-| `dependency_rules.py` | Dependency relation labeling |
-| `postprocessing.py` | NULL/trace resolution and label correction |
 
 ## Requirements
 
