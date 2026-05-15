@@ -18,7 +18,7 @@ The construction of VDT follows a two-stage pipeline:
 1.  **Phase 1: Automatic Conversion**  
     A specialized rule-based converter transforms the **NIIVTB-1** constituency treebank into an initial dependency version, referred to as VDT Auto.
 2.  **Phase 2: Manual Post-editing**  
-    Well-trained annotators perform rigorous manual edditing on *VDT Auto* to produce the final gold-standard treebank, VDT.
+    Well-trained annotators perform rigorous manual editing on *VDT Auto* to produce the final gold-standard treebank, VDT.
 
 <p align="center">
   <img src="VDT-process.png" alt="VDT Construction Process" width="850"/>
