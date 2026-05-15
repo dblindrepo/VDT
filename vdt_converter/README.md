@@ -8,11 +8,11 @@ A rule-based converter that transforms Vietnamese **constituency trees** into **
 vdt_converter/
 ├── main.py               # CLI: batch conversion over NIIVTB-1 splits
 ├── converter.py          # Core conversion logic: head–dependent mapping, CoNLL-U record assembly, and file I/O
-├── preprocessing.py      # Tree addresses, POS extraction, leaf indexing
-├── head_percolation.py   # Head-percolation tables and coordination handling
+├── preprocessing.py      # Tree addressing, POS extraction, leaf indexing
+├── head_percolation.py   # Determines the head of each constituent via head-percolation rules and coordination handling
 ├── dependency_rules.py   # Dependency relation labeling (83-label cascade)
 ├── postprocessing.py     # NULL/trace resolution and label correction
-└── README.md   # This file
+└── README.md
 ```
 
 ## Conversion pipeline
@@ -41,9 +41,9 @@ VnDep/[VnDep]*.conllu        post-process + write (# ID = n headers)
 |--------|------|
 | `main.py` | Argument parsing, output directory setup, glob over `*/*.prd`, sequential three-step batch run. |
 | `converter.py` | `get_all_relation()` builds head/relation maps; `get_dependency_tree_list()` assembles CoNLL-U rows; `to_oneline()` and `finish_dependency_tree()` handle I/O. |
-| `preprocessing.py` | Subtree navigation, breadth-first addresses, POS and leaf-index helpers. |
-| `head_percolation.py` | `HEAD_PERCOLATION_RULES`, conjunction detection, recursive `assign_headword_for_phrase()`. |
-| `dependency_rules.py` | Predicate helpers (`has_SBJ`, `is_DOBJ`, …) and `get_dependency_relation()` cascade. |
+| `preprocessing.py` | Access constituents by tree path (`get_subtree`); list all constituent addresses (`get_all_subtree_address`); extract POS tags; assign numeric indices to leaves (`from_word_to_number`). |
+| `head_percolation.py` | Identify the lexical head of each constituent via `HEAD_PERCOLATION_RULES` and exception rules; labels coordinated dependents (`conj`, `cc`, `punct`) in `assign_headword_for_phrase()`. |
+| `dependency_rules.py` | Assigns each token a VDT dependency label from parent–child phrase labels and functional tags; maps phrases with `get_C_of_headword` / `get_P_of_C`; applies an ordered rule cascade in `get_dependency_relation()`. |
 | `postprocessing.py` | NULL/antecedent resolution, second relations, relinking, indexing, and tree-wide label corrections. |
 
 ## Requirements
