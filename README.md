@@ -30,11 +30,11 @@ The construction of VDT follows a two-stage pipeline:
 
 The VDT corpus consists of **10,418 sentences** extracted from the NIIVTB-1 corpus, containing **224,249 tokens** with an overall Mean Dependency Distance (MDD) of **3.25**.
 
-| Split | Sentences |
-|:------|-----------:|
-| Train | 8,418 |
-| Dev   | 1,000 |
-| Test  | 1,000 |
+| Split | Sentences | Tokens |
+|:------|----------:|-------:|
+| Train | 8,418 | 177,243 |
+| Dev   | 1,000 | 23,592 |
+| Test  | 1,000 | 23,414 |
 
 ---
 
@@ -63,13 +63,8 @@ cd vdt_converter
 python main.py --input-dir <path_to_NIIVTB-1> [--base-dir <output_directory>]
 ```
 
-Example:
-
-```bash
-python main.py --input-dir ./vdt_converter/NIIVTB-1 --base-dir ./vdt_converter/outputs
-```
 ## Note: 
-For a detailed breakdown of the conversion logic, head-percolation rules, and module descriptions, please refer to the Converter Documentation.
+For a detailed breakdown of the conversion logic, head-percolation rules, and module descriptions, please refer to the [Converter Documentation](https://github.com/dblindrepo/VDT/tree/main/vdt_converter).
 
 ### 4. Output
 
