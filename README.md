@@ -85,6 +85,11 @@ The converter generates two sets of outputs under `<base-dir>/`:
 - `OneLine/` contains intermediate linearized representations.
 - `VnDep/` contains the final converted dependency trees in CoNLL-U format.
 
+---
+
+## Related documentation
+- `dependency_labeling_procedures.pdf` — formal specification of the labeling cascade
+
 ## Release Notice
 
 This repository is currently anonymized for double-blind review. The full guidelines and the final treebank will be publicly released upon paper acceptance.
