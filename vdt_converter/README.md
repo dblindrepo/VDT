@@ -15,8 +15,6 @@ vdt_converter/
 └── README.md   # This file
 ```
 
-Input treebank data (not shipped in this repo) is expected in a sibling directory such as `NIIVTB-1/` with `Train/`, `Dev/`, and `Test/` subfolders containing `.prd` files.
-
 ## Conversion pipeline
 
 `main.py` runs three steps for every `.prd` file:
@@ -102,4 +100,3 @@ python main.py --input-dir ./NIIVTB-1 --base-dir ./output
 ## Related documentation
 
 - [`README.md`](README.md) — VDT treebank overview, label taxonomy, and citation
-- `dependency_labeling_procedures.pdf` — formal specification of the labeling cascade
