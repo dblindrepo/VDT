@@ -10,7 +10,7 @@ vdt_converter/
 ├── converter.py          # Core conversion logic: head–dependent mapping, CoNLL-U record assembly, and file I/O
 ├── preprocessing.py      # Tree addressing, POS extraction, leaf indexing
 ├── head_percolation.py   # Determines the head of each constituent via head-percolation rules and coordination handling
-├── dependency_rules.py   # Dependency relation labeling (83-label cascade)
+├── dependency_rules.py   # Dependency relation labeling
 ├── postprocessing.py     # NULL/trace resolution and label correction
 └── README.md
 ```
