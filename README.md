@@ -28,13 +28,13 @@ The construction of VDT follows a two-stage pipeline:
 
 ## Dataset Statistics
 
-The VDT corpus consists of **10,418 sentences** extracted from the NIIVTB-1 corpus.
+The VDT corpus consists of **10,418 sentences** extracted from the NIIVTB-1 corpus, containing **224,249 tokens** with an overall Mean Dependency Distance (MDD) of **3.25**.
 
-| Split | Sentences | Tokens | MDD 
-|:---|:---:|:---|
-| **Train** | 8,418 |  |
-| **Dev** | 1,000 |  |
-| **Test** | 1,000 |  |
+| Split | Sentences |
+|:------|-----------:|
+| Train | 8,418 |
+| Dev   | 1,000 |
+| Test  | 1,000 |
 
 ---
 
