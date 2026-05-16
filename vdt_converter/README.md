@@ -1,17 +1,17 @@
 # VDT converter
 
-A rule-based converter that transforms Vietnamese **constituency trees** into **dependency trees** in [CoNLL-U](https://universaldependencies.org/format.html) format. The system is designed for the **NIIVTB-1** annotation scheme and assigns relations from the **VDT** label inventory (83 dependency relations; see [`README.md`](README.md)).
+A rule-based converter that transforms Vietnamese **constituency trees** into **dependency trees** in [CoNLL-U](https://universaldependencies.org/format.html) format. The system is designed for the **NIIVTB-1** annotation scheme and assigns relations from the **VDT** label inventory.
 
 ## Module descriptions
 
 | Module | Role |
 |--------|------|
-| `main.py` | CLI: batch conversion over NIIVTB-1 splits |
-| `converter.py` | Core conversion logic: head–dependent mapping, CoNLL-U record assembly, and file I/O |
-| `preprocessing.py` | Tree addressing, POS extraction, leaf indexing |
-| `head_percolation.py` | Determines the head of each constituent via head-percolation rules and coordination handling |
-| `dependency_rules.py` | Dependency relation labeling |
-| `postprocessing.py` | NULL/trace resolution and label correction |
+| main.py | CLI & Batch Processing: Handles arguments, sets up directory splits, and loops through data files. |
+| converter.py | Pipeline coordinator and CoNLL-U format record builder |
+| preprocessing.py | Tree addressing, POS extraction, leaf indexing |
+| head_percolation.py | Phrasal head determining via head-percolation rules and coordination handling |
+| dependency_rules.py | Dependency relation labeling |
+| postprocessing.py | NULL/trace resolution and passive voice, negation correction |
 
 ## Conversion pipeline
 
@@ -84,6 +84,3 @@ python main.py --input-dir ./NIIVTB-1 --base-dir ./output
     └── Test/
 ```
 
-## Related documentation
-
-- [`README.md`](README.md) — VDT treebank overview, label taxonomy, and citation
